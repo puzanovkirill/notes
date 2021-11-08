@@ -9,14 +9,14 @@ const Note = ({ header, date }) => {
    };
    return (
       <div
-         className="w-60 min-h-60"
+         className="w-60 h-60"
          onMouseEnter={() => {
             toggleButtonClass();
          }}
          onMouseLeave={() => toggleButtonClass()}
       >
          <div className="p-6 border rounded-md w-full h-full flex justify-between flex-col">
-            <h2 className="break-all text-lg">{header}</h2>
+            <h2 className="break-all text-lg three-dots">{header}</h2>
             <div className="w-full flex justify-between">
                <div>{date}</div>
                <button
