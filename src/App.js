@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar';
+import Note from './components/Note';
 
 function App() {
    //note format
@@ -15,6 +16,7 @@ function App() {
       <div className="App">
          <div className="container  mx-auto">
             <Navbar />
+            <Note />
          </div>
       </div>
    );
