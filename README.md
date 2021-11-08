@@ -1,0 +1,7 @@
+## Notes
+
+# React
+
+# Redux
+
+# Tailwind
