@@ -12,6 +12,7 @@ function App() {
    color: color,
    }
     */
+
    const notesArray = [
       {
          id: Math.random(),
