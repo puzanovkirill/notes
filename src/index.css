@@ -35,6 +35,15 @@ code {
   border-radius: 5px;
 }
 
+.remove-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.remove-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (max-width: 1024px){
   .modal {
     width: 70%;

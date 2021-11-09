@@ -43,7 +43,7 @@ const ModalWindow = () => {
             </div>
             <hr className="mt-2" />
             <textarea
-               className="h-4/5 text-2xl break-all overflow-y-scroll w-full resize-none outline-none"
+               className="h-4/5 text-2xl break-all overflow-y-scroll w-full resize-none outline-none remove-scrollbar"
                defaultValue={singleNote.content ? singleNote.content.text : ''}
             />
             <hr className="mt-2" />
