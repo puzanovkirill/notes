@@ -9,6 +9,7 @@ const Navbar = () => {
    const changeIsOpened = (state) => {
       dispatch({ type: 'CHANGE_OPENED', payload: !state });
    };
+
    return (
       <div className="h-20 flex justify-between items-center">
          <div className="flex w-2/3">

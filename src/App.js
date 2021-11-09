@@ -16,8 +16,7 @@ function App() {
    const notesArray = [
       {
          id: Math.random(),
-         header:
-            'Note name 1 some text heresome text heresome textsome textsome textsome textsome textsome textsome textsome textsome text here some text here',
+         header: 'Note name 1',
          text: 'some text heresome text heresome text heresome text here',
          date: '1/1/1980',
       },

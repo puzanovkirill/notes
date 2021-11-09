@@ -1,6 +1,19 @@
 import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Note = ({ header, date }) => {
+const Note = ({ note }) => {
+   const dispatch = useDispatch();
+   const isOpen = useSelector((state) => state.modal);
+   const singleNote = useSelector((state) => state.singleNote);
+
+   const getContent = () => {
+      dispatch({ type: 'CREATE_NEW_NOTE', payload: note });
+   };
+
+   const changeIsOpened = (state) => {
+      dispatch({ type: 'CHANGE_OPENED', payload: !state });
+   };
+
    const buttonRef = useRef();
 
    const toggleButtonClass = () => {
@@ -14,13 +27,17 @@ const Note = ({ header, date }) => {
             toggleButtonClass();
          }}
          onMouseLeave={() => toggleButtonClass()}
+         onClick={() => {
+            getContent();
+            changeIsOpened(isOpen);
+         }}
       >
          <div className="p-6 border rounded-md w-full h-full flex justify-between flex-col">
-            <h2 className="break-all text-lg three-dots">{header}</h2>
+            <h2 className="break-all text-lg three-dots">{note.header}</h2>
             <div className="w-full flex justify-between">
-               <div>{date}</div>
+               <div>{note.date}</div>
                <button
-                  className="opacity-0 ease-in-out duration-300"
+                  className="opacity-0 ease-in-out duration-300 hover:opacity-100"
                   ref={buttonRef}
                >
                   <i className="fa fa-trash"></i>
