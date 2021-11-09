@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 const Note = ({ note }) => {
    const dispatch = useDispatch();
    const isOpen = useSelector((state) => state.modal);
-   const singleNote = useSelector((state) => state.singleNote);
 
    const getContent = () => {
       dispatch({ type: 'CREATE_NEW_NOTE', payload: note });
    };
 
    const changeIsOpened = (state) => {
+      document.body.style.overflow = 'hidden';
       dispatch({ type: 'CHANGE_OPENED', payload: !state });
    };
 
@@ -35,7 +35,9 @@ const Note = ({ note }) => {
          <div className="p-6 border rounded-md w-full h-full flex justify-between flex-col">
             <h2 className="break-all text-lg three-dots">{note.header}</h2>
             <div className="w-full flex justify-between">
-               <div>{note.date}</div>
+               <div>
+                  {`${note.date.getDay()}/${note.date.getMonth()}/${note.date.getFullYear()}`}
+               </div>
                <button
                   className="opacity-0 ease-in-out duration-300 hover:opacity-100"
                   ref={buttonRef}

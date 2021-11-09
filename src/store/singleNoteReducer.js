@@ -1,4 +1,4 @@
-const defaultState = { id: '', header: '', text: '', date: '' };
+const defaultState = { content: { id: '', header: '', text: '', date: '' } };
 
 export const singleNoteReducer = (state = defaultState, action) => {
    switch (action.type) {

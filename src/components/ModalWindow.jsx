@@ -7,9 +7,10 @@ const ModalWindow = () => {
    const today = new Date();
    const isOpen = useSelector((state) => state.modal);
    const singleNote = useSelector((state) => state.singleNote);
+   const newNote = { id: Math.random(), date: new Date() };
 
-   const getContent = () => {
-      dispatch({ type: 'CREATE_NEW_NOTE', payload: singleNote });
+   const createNote = (state) => {
+      dispatch({ type: 'ADD_NOTE', payload: state });
    };
 
    const changeIsOpened = (state) => {
@@ -21,15 +22,26 @@ const ModalWindow = () => {
    };
 
    Modal.setAppElement(document.getElementById('root'));
+
    return (
       <Modal className="modal" isOpen={isOpen}>
-         <div className="p-8 h-full">
+         <div
+            className="p-8 h-full"
+            onKeyDown={(e) => {
+               if (e.key === 'Escape') changeIsOpened(isOpen);
+            }}
+         >
             <div className="flex justify-between">
                <input
                   maxLength={25}
                   placeholder="header..."
                   className="text-4xl outline-none h-full"
-                  value={singleNote.content ? singleNote.content.header : ''}
+                  defaultValue={
+                     singleNote.content ? singleNote.content.header : ''
+                  }
+                  onChange={(e) => {
+                     newNote.header = e.target.value;
+                  }}
                />
                <button
                   className="relative -top-6"
@@ -37,6 +49,7 @@ const ModalWindow = () => {
                      changeIsOpened(isOpen);
                      resetNote();
                   }}
+                  tabIndex={-1}
                >
                   <i className="fa fa-close"></i>
                </button>
@@ -45,15 +58,26 @@ const ModalWindow = () => {
             <textarea
                className="h-4/5 text-2xl break-all overflow-y-scroll w-full resize-none outline-none remove-scrollbar"
                defaultValue={singleNote.content ? singleNote.content.text : ''}
+               onChange={(e) => {
+                  newNote.text = e.target.value;
+               }}
             />
             <hr className="mt-2" />
             <div className="flex justify-between mt-4 ">
                <div className="">
-                  {singleNote.content
-                     ? singleNote.content.date
+                  {singleNote.content.id
+                     ? `${singleNote.content.date.getDay()}/${singleNote.content.date.getMonth()}/${singleNote.content.date.getFullYear()}`
                      : `${today.getDay()}/${today.getMonth()}/${today.getFullYear()}`}
                </div>
-               <button>Save</button>
+               <button
+                  className="pl-2 pr-2 "
+                  onClick={() => {
+                     createNote(newNote);
+                     changeIsOpened(isOpen);
+                  }}
+               >
+                  Save
+               </button>
             </div>
          </div>
       </Modal>
