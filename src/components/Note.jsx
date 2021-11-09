@@ -14,6 +14,9 @@ const Note = ({ note }) => {
       dispatch({ type: 'CHANGE_OPENED', payload: !state });
    };
 
+   const removeNote = () => {
+      dispatch({ type: 'REMOVE_NOTE', payload: note.id });
+   };
    const buttonRef = useRef();
 
    const toggleButtonClass = () => {
@@ -39,10 +42,14 @@ const Note = ({ note }) => {
                   {`${note.date.getDay()}/${note.date.getMonth()}/${note.date.getFullYear()}`}
                </div>
                <button
-                  className="opacity-0 ease-in-out duration-300 hover:opacity-100"
+                  className="opacity-0 ease-in-out duration-300 hover:opacity-100 w-6 h-6"
                   ref={buttonRef}
+                  onClick={(e) => {
+                     e.stopPropagation();
+                     removeNote();
+                  }}
                >
-                  <i className="fa fa-trash"></i>
+                  <i className="fa fa-trash "></i>
                </button>
             </div>
          </div>
