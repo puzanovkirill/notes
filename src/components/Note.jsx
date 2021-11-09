@@ -9,7 +9,7 @@ const Note = ({ header, date }) => {
    };
    return (
       <div
-         className="w-60 h-60"
+         className="w-60 h-60 hover:shadow-lg transform hover:scale-105 ease-in-out duration-300 cursor-pointer"
          onMouseEnter={() => {
             toggleButtonClass();
          }}

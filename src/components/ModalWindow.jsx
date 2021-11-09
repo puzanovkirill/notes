@@ -7,10 +7,10 @@ const ModalWindow = () => {
    Modal.setAppElement(document.getElementById('root'));
    return (
       <Modal
+         className="modal"
          isOpen={isOpen}
          style={{
-            width: '80wh',
-            height: '80vh',
+            content: {},
          }}
       >
          <div className="p-8 h-full">
