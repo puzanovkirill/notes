@@ -4,6 +4,12 @@ import ModalWindow from './components/ModalWindow';
 import { useSelector } from 'react-redux';
 
 function App() {
+   /*
+    TASKS:
+    1. Note changing
+    2. Dark mode
+    3. Adaptive
+     */
    const notesArray = useSelector((state) => state.notes.notes);
 
    return (

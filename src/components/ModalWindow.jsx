@@ -7,8 +7,12 @@ const ModalWindow = () => {
    const today = new Date();
    const isOpen = useSelector((state) => state.modal);
    const singleNote = useSelector((state) => state.singleNote);
+   const notes = useSelector((state) => state.notes.notes);
    const newNote = { id: Math.random(), date: new Date() };
 
+   const editField = (type, state) => {
+      dispatch({ type: type, payload: state });
+   };
    const createNote = (state) => {
       dispatch({ type: 'ADD_NOTE', payload: state });
    };
@@ -19,6 +23,10 @@ const ModalWindow = () => {
 
    const resetNote = () => {
       dispatch({ type: 'RESET_NOTE', payload: {} });
+   };
+
+   const changeNote = () => {
+      dispatch({ type: 'CHANGE_NOTE', payload: singleNote });
    };
 
    Modal.setAppElement(document.getElementById('root'));
@@ -40,6 +48,8 @@ const ModalWindow = () => {
                      singleNote.content ? singleNote.content.header : ''
                   }
                   onChange={(e) => {
+                     if (singleNote.content.id)
+                        editField('EDIT_HEADER', e.target.value);
                      newNote.header = e.target.value;
                   }}
                />
@@ -59,6 +69,8 @@ const ModalWindow = () => {
                className="h-4/5 text-2xl break-all overflow-y-scroll w-full resize-none outline-none remove-scrollbar"
                defaultValue={singleNote.content ? singleNote.content.text : ''}
                onChange={(e) => {
+                  if (singleNote.content.id)
+                     editField('EDIT_TEXT', e.target.value);
                   newNote.text = e.target.value;
                }}
             />
@@ -72,6 +84,11 @@ const ModalWindow = () => {
                <button
                   className="pl-2 pr-2 "
                   onClick={() => {
+                     if (singleNote.content.id) {
+                        changeNote();
+                        changeIsOpened(isOpen);
+                        return;
+                     }
                      createNote(newNote);
                      changeIsOpened(isOpen);
                   }}
