@@ -23,6 +23,7 @@ const Note = ({ note }) => {
       buttonRef.current.classList.toggle('opacity-0');
       buttonRef.current.classList.toggle('opacity-100');
    };
+
    return (
       <div
          className="w-60 h-60 hover:shadow-lg transform hover:scale-105 ease-in-out duration-300 cursor-pointer"

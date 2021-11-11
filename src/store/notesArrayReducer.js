@@ -25,7 +25,7 @@ export const notesArrayReducer = (state = defaultState, action) => {
             ],
          };
       case 'SET_NOTES':
-         return { ...state, notes: action.payload };
+         return { ...state, notes: [...action.payload] };
       default:
          return state;
    }
