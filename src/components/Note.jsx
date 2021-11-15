@@ -40,7 +40,9 @@ const Note = ({ note }) => {
             <h2 className="break-all text-lg three-dots">{note.header}</h2>
             <div className="w-full flex justify-between">
                <div>
-                  {`${note.date.getDay()}/${note.date.getMonth()}/${note.date.getFullYear()}`}
+                  {`${note.date.getDate()}/${
+                     note.date.getMonth() + 1
+                  }/${note.date.getFullYear()}`}
                </div>
                <button
                   className="opacity-0 ease-in-out duration-300 hover:opacity-100 w-6 h-6"

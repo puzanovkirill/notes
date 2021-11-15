@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ModalWindow = () => {
    const dispatch = useDispatch();
-   const today = new Date();
    const isOpen = useSelector((state) => state.modal);
    const singleNote = useSelector((state) => state.singleNote);
-   const notes = useSelector((state) => state.notes.notes);
    const newNote = { id: Math.random(), date: new Date() };
 
    const editField = (type, state) => {
@@ -30,7 +28,6 @@ const ModalWindow = () => {
    };
 
    Modal.setAppElement(document.getElementById('root'));
-
    return (
       <Modal className="modal" isOpen={isOpen}>
          <div
@@ -78,8 +75,12 @@ const ModalWindow = () => {
             <div className="flex justify-between mt-4 ">
                <div className="">
                   {singleNote.content.id
-                     ? `${singleNote.content.date.getDay()}/${singleNote.content.date.getMonth()}/${singleNote.content.date.getFullYear()}`
-                     : `${today.getDay()}/${today.getMonth()}/${today.getFullYear()}`}
+                     ? `${singleNote.content.date.getDate()}/${
+                          singleNote.content.date.getMonth() + 1
+                       }/${singleNote.content.date.getFullYear()}`
+                     : `${new Date().getDate()}/${
+                          new Date().getMonth() + 1
+                       }/${new Date().getFullYear()}`}
                </div>
                <button
                   className="pl-2 pr-2 "
