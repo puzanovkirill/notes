@@ -26,7 +26,7 @@ const Note = ({ note }) => {
 
    return (
       <div
-         className="w-60 h-60 hover:shadow-lg transform hover:scale-105 ease-in-out duration-300 cursor-pointer"
+         className="sm:w-60 sm:h-60 w-10/12 h-40  hover:shadow-lg transform hover:scale-105 ease-in-out duration-300 cursor-pointer"
          onMouseEnter={() => {
             toggleButtonClass();
          }}

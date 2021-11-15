@@ -40,7 +40,7 @@ const ModalWindow = () => {
                <input
                   maxLength={25}
                   placeholder="header..."
-                  className="text-4xl outline-none h-full"
+                  className="text-4xl outline-none h-full w-10/12 sm:w-auto"
                   defaultValue={
                      singleNote.content ? singleNote.content.header : ''
                   }

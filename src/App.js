@@ -30,7 +30,7 @@ function App() {
 
    return (
       <div className="App">
-         <div className="container  mx-auto">
+         <div className="mx-auto container">
             <Navbar />
             {notesArray.length > 0 ? <NotesList notes={notesArray} /> : null}
             <ModalWindow />
