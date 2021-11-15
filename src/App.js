@@ -5,10 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 function App() {
-   /*
-    TASKS:
-    1. Dark mode
-     */
    const notesArray = useSelector((state) => state.notes.notes);
    const dispatch = useDispatch();
 
@@ -26,7 +22,7 @@ function App() {
       });
       if (changedDateArray.length > 0)
          dispatch({ type: 'SET_NOTES', payload: changedDateArray });
-   }, []);
+   }, [dispatch]);
 
    return (
       <div className="App dark:text-green-400 ease-in-out duration-300 dark:bg-gray-900 min-h-screen">
