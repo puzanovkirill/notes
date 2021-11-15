@@ -25,9 +25,10 @@ const Search = () => {
       e.target.classList.toggle('shadow-md');
    };
    return (
-      <div className=" w-full ml-0 sm:ml-8 h-12 sm:h-auto mt-4 sm:mt-0">
+      <div className="w-full ml-0 sm:ml-8 h-12 sm:h-auto mt-4 sm:mt-0">
          <input
-            className="w-auto sm:w-full bg-gray-100 w-full h-full pl-6 outline-none rounded-md ease-in-out duration-700"
+            className="dark:bg-gray-800 w-auto sm:w-full bg-gray-100 w-full h-full pl-6 outline-none rounded-md
+            ease-in-out duration-700 dark:placeholder-green-400"
             placeholder="type note name here..."
             onFocus={(e) => {
                toggleClasses(e);

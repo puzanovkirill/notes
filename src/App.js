@@ -8,7 +8,6 @@ function App() {
    /*
     TASKS:
     1. Dark mode
-    2. Adaptive
      */
    const notesArray = useSelector((state) => state.notes.notes);
    const dispatch = useDispatch();
@@ -19,6 +18,7 @@ function App() {
    }, [notesArray]);
 
    useEffect(() => {
+      localStorage.theme = 'light';
       const notesFromLocalStorage = JSON.parse(localStorage.getItem('notes'));
       const changedDateArray = notesFromLocalStorage.map((item) => {
          item.date = new Date(item.date);
@@ -29,7 +29,7 @@ function App() {
    }, []);
 
    return (
-      <div className="App">
+      <div className="App dark:text-green-400 ease-in-out duration-300 dark:bg-gray-900 min-h-screen">
          <div className="mx-auto container">
             <Navbar />
             {notesArray.length > 0 ? <NotesList notes={notesArray} /> : null}

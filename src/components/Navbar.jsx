@@ -10,15 +10,26 @@ const Navbar = () => {
       dispatch({ type: 'CHANGE_OPENED', payload: !state });
    };
 
+   const toggleThemeMode = () => {
+      if (localStorage.theme === 'light') {
+         localStorage.theme = 'dark';
+         document.documentElement.classList.add('dark');
+         return;
+      }
+      if (localStorage.theme === 'dark') {
+         localStorage.theme = 'light';
+         document.documentElement.classList.remove('dark');
+      }
+   };
    return (
       <div className="sm:h-20 flex flex-col sm:flex-row justify-between items-center">
          <div className="flex flex-col sm:flex-row w-2/3 items-center sm:items-stretch">
-            <h1 className="sm:text-center inline sm:text-4xl font-bold text-7xl">
+            <h1 className="sm:text-center inline sm:text-4xl font-bold text-7xl ">
                Notes
             </h1>
             <Search />
             <button
-               className="sm:h-8 sm:w-8 w-full h-12 bg-gray-100 sm:ml-2 ml-0 self-center rounded-md sm:mt-0 mt-4 sm:border-none border"
+               className="dark:bg-gray-800 sm:h-8 sm:w-8 w-full h-12 bg-gray-100 sm:ml-2 ml-0 self-center rounded-md sm:mt-0 mt-4 sm:border-none border"
                onClick={() => {
                   changeIsOpened(isOpen);
                }}
@@ -29,8 +40,13 @@ const Navbar = () => {
                </div>
             </button>
          </div>
-         <button className="sm:text-xl text-md sm:pl-2 sm:pr-2 p-0 ease-in-out duration-700 sm:relative absolute top-0 left-3/4 sm:left-0">
-            Dark mode
+         <button
+            className="sm:text-xl text-md sm:pl-2 sm:pr-2 p-0 ease-in-out duration-700 sm:relative absolute top-0 left-3/4 sm:left-0"
+            onClick={() => {
+               toggleThemeMode();
+            }}
+         >
+            Change mode
          </button>
       </div>
    );

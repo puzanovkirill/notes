@@ -26,7 +26,8 @@ const Note = ({ note }) => {
 
    return (
       <div
-         className="sm:w-60 sm:h-60 w-10/12 h-40  hover:shadow-lg transform hover:scale-105 ease-in-out duration-300 cursor-pointer"
+         className=" sm:w-60 sm:h-60 w-10/12 h-40  hover:shadow-lg transform hover:scale-105 ease-in-out
+          duration-300 cursor-pointer "
          onMouseEnter={() => {
             toggleButtonClass();
          }}
@@ -36,7 +37,7 @@ const Note = ({ note }) => {
             changeIsOpened(isOpen);
          }}
       >
-         <div className="p-6 border rounded-md w-full h-full flex justify-between flex-col">
+         <div className="p-6 border rounded-md w-full h-full flex justify-between flex-col dark:border-green-400">
             <h2 className="break-all text-lg three-dots">{note.header}</h2>
             <div className="w-full flex justify-between">
                <div>

@@ -31,7 +31,7 @@ const ModalWindow = () => {
    return (
       <Modal className="modal" isOpen={isOpen}>
          <div
-            className="p-8 h-full"
+            className="p-8 h-full dark:bg-gray-900 rounded-md dark:text-green-400"
             onKeyDown={(e) => {
                if (e.key === 'Escape') changeIsOpened(isOpen);
             }}
@@ -40,7 +40,7 @@ const ModalWindow = () => {
                <input
                   maxLength={25}
                   placeholder="header..."
-                  className="text-4xl outline-none h-full w-10/12 sm:w-auto"
+                  className="text-4xl outline-none h-full w-10/12 sm:w-auto dark:bg-gray-900"
                   defaultValue={
                      singleNote.content ? singleNote.content.header : ''
                   }
@@ -61,9 +61,10 @@ const ModalWindow = () => {
                   <i className="fa fa-close"></i>
                </button>
             </div>
-            <hr className="mt-2" />
+            <hr className="mt-2 dark:border-green-400" />
             <textarea
-               className="h-4/5 text-2xl break-all overflow-y-scroll w-full resize-none outline-none remove-scrollbar"
+               className="h-4/5 text-2xl break-all overflow-y-scroll w-full resize-none
+               outline-none remove-scrollbar dark:bg-gray-900"
                defaultValue={singleNote.content ? singleNote.content.text : ''}
                onChange={(e) => {
                   if (singleNote.content.id)
@@ -71,7 +72,7 @@ const ModalWindow = () => {
                   newNote.text = e.target.value;
                }}
             />
-            <hr className="mt-2" />
+            <hr className="mt-2 dark:border-green-400" />
             <div className="flex justify-between mt-4 ">
                <div className="">
                   {singleNote.content.id
